@@ -1,27 +1,39 @@
 import jwt from "jsonwebtoken";
 
-const secret = 'test';
-
 const auth = async (req, res, next) => {
-  try {
-    const token = req.headers.authorization.split(" ")[1];
-    const isCustomAuth = token.length < 500;
+  let token;
 
-    let decodedData;
+  if (
+    //In http headers, we have authorisations object
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    try {
+      //Get token from bearer. split turns it into an array and gets value of position [1] which is token. value of [0] = bearer tag
+      token = await req.headers.authorization.split(" ")[1];
 
-    if (token && isCustomAuth) {      
-      decodedData = jwt.verify(token, secret);
+      // If token is less than 500 it is ours else user token is from google auth
+      const isCustomAuth = token.length < 500;
 
-      req.userId = decodedData?.id;
-    } else {
-      decodedData = jwt.decode(token);
+      let decodedData;
 
-      req.userId = decodedData?.sub;
-    }    
+      // Verify token
+      if (token && isCustomAuth) {
+        decodedData = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-    next();
-  } catch (error) {
-    console.log(error);
+        // Get user from the token
+        req.userId = decodedData?.id;
+      }
+
+      next();
+    } catch (error) {
+      console.log(error.message);
+      res.status(401).json({ message: "❌ Not authorized" });
+    }
+  }
+
+  if (!token) {
+    res.status(401).json({ message: "❌ Not authorized, no token" });
   }
 };
 
