@@ -2,6 +2,8 @@ import { SecondaryCard } from "../components/Cards/SecondaryCard";
 import { DataAll } from "../constant/dataAll";
 import { DataSome } from "../constant/dataSome";
 import { useNavigate } from "react-router-dom";
+import Explore from "../assets/explore.png";
+import Avatar from "../assets/avatar.png";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -30,21 +32,13 @@ export default function Home() {
             </div>
           </div>
           <div className="bg-white rounded-lg p-3 shadow-lg space-y-3 min-w-[35%]">
-            <div className="relative overflow-auto h-[20rem] rounded-lg">
-              <img
-                src="/assets/explore.png"
-                alt="exploreimage"
-                className="object-cover"
-              />
+            <div className="relative overflow-clip h-[20rem] rounded-lg">
+              <img src={Explore} alt="exploreimage" className="object-cover" />
             </div>
             <div className="">
               <div className="flex space-x-3">
-                <div className="relative overflow-auto h-12 w-12 mt-1">
-                  <img
-                    src="/assets/avatar.png"
-                    alt="avatar"
-                    className="object-cover"
-                  />
+                <div className="relative overflow-clip h-12 w-12 mt-1">
+                  <img src={Avatar} alt="avatar" className="object-cover" />
                 </div>
                 <div className="">
                   <h3 className="text-lg">Connect with Laura on KC</h3>

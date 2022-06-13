@@ -1,4 +1,5 @@
 import { HiDotsVertical } from "react-icons/hi";
+import Avatar from "../../assets/avatar.png";
 
 export const PrimaryCard = ({ name, followers, image, title }) => {
   return (
@@ -19,11 +20,7 @@ export const PrimaryCard = ({ name, followers, image, title }) => {
       <div className="flex items-center justify-between px-5 py-2">
         <div className="flex space-x-3 items-center">
           <div className="relative overflow-clip h-8 w-8 rounded-full">
-            <img
-              src="/assets/avatar.png"
-              alt="avatar"
-              className="object-cover"
-            />
+            <img src={Avatar} alt="avatar" className="object-cover" />
           </div>
           <div className="">
             <h3 className="text-sm text-slate-500 ">{name}</h3>

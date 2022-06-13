@@ -1,7 +1,9 @@
+import HS from "../../assets/hs.png";
+
 export const SecondaryCard = ({ followers, title, image, color }) => {
   return (
     <div className="relative max-w-sm space-y-8">
-      <div className="relative overflow-clip h-60 mt-1 rounded-xl">
+      <div className="relative overflow-hidden h-60 mt-1 rounded-xl">
         <img src={image} alt="avatar" className="object-cover" />
       </div>
       <div className="space-y-2">
@@ -17,7 +19,7 @@ export const SecondaryCard = ({ followers, title, image, color }) => {
 
           <a href="/">
             <div className="relative w-7 h-7">
-              <img alt="hs" src="../ assets/hs.png" className="object-cover" />
+              <img alt="hs" src={HS} className="object-cover" />
             </div>
           </a>
         </div>

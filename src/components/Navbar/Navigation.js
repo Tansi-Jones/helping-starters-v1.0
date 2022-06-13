@@ -5,9 +5,10 @@ import MenuDropdown from "./MenuDropdown";
 import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import Logo from "../../assets/logo.png";
 
 export const Navigation = () => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const [modal, setModal] = useState(false);
 
   const navigate = useNavigate();
@@ -32,12 +33,12 @@ export const Navigation = () => {
 
   return (
     <>
-      <nav className="flex items-center justify-between w-[90%] mx-auto py-3">
+      <nav className="flex items-center justify-between w-[90%] mx-auto">
         <div
-          className="relative w-52 h-10 transform -translate-x-7 cursor-pointer"
-          onClick={() => navigate.push("/")}
+          className="relative transform -translate-x-7 cursor-pointer"
+          onClick={() => navigate("/")}
         >
-          <img src="/assets/logo.png" className="object-cover" alt="logo" />
+          <img src={Logo} alt="logo" className="h-16 w-48 object-cover" />
         </div>
 
         {user ? (
@@ -47,7 +48,7 @@ export const Navigation = () => {
                 <div
                   key={id}
                   className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-primary to-secondary cursor-pointer"
-                  onClick={() => navigate.push(`${href}`)}
+                  onClick={() => navigate(`${href}`)}
                 >
                   <p>{title}</p>
                 </div>
@@ -62,7 +63,7 @@ export const Navigation = () => {
                 <div
                   key={id}
                   className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-primary to-secondary cursor-pointer"
-                  onClick={() => navigate.push(`${href}`)}
+                  onClick={() => navigate(`${href}`)}
                 >
                   <p>{title}</p>
                 </div>

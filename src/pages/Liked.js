@@ -13,7 +13,7 @@ export default function Main() {
             <h1 className="text-slate-600 text-xl font-bold uppercase">
               {/* All Projects */}
             </h1>
-            <div className="text-slate-600 text-base py-2 px-3 rounded-md font-semibold bg-white flex items-center space-x-3">
+            <div className="text-slate-600 text-base py-2 px-3 rounded-md font-normal bg-white flex items-center space-x-3">
               <HiSearch className="text-slate-500 text-lg" />
               <input
                 type="text"

@@ -1,4 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import Launch from "../assets/lauch.png";
+import Icon1 from "../assets/Icon-1.svg";
+import Icon2 from "../assets/Icon-2.svg";
+import Icon3 from "../assets/Icon-3.svg";
+import Icon4 from "../assets/Icon.png";
+import Member from "../assets/Members.png";
+import Proposal from "../assets/Proposal.png";
+import Group from "../assets/Group.png";
 
 export default function Main() {
   const navigate = useNavigate();
@@ -19,7 +27,7 @@ export default function Main() {
             </button>
           </div>
           <div className="relative w-full h-96">
-            <img alt="" src="/assets/lauch.png" className="object-contain" />
+            <img alt="" src={Launch} className="object-contain" />
           </div>
         </section>
 
@@ -35,11 +43,7 @@ export default function Main() {
           <div className="flex flex-wrap space-y-5 lg:space-y-0 items-center justify-between mt-10 pb-20">
             <div className="bg-white rounded-md py-4 px-7 shadow-md space-y-2 max-w-sm">
               <div className="relative w-20 h-20 mx-auto">
-                <img
-                  alt=""
-                  src="/assets/icon-1.svg"
-                  className="object-contain"
-                />
+                <img alt="" src={Icon1} className="object-contain" />
               </div>
               <h1 className="text-center text-black capitalize font-bold text-2xl">
                 Networking
@@ -52,11 +56,7 @@ export default function Main() {
 
             <div className="bg-white rounded-md py-4 px-7 shadow-md space-y-2 max-w-sm">
               <div className="relative w-20 h-20 mx-auto">
-                <img
-                  alt=""
-                  src="/assets/icon-2.svg"
-                  className="object-contain"
-                />
+                <img alt="" src={Icon2} className="object-contain" />
               </div>
               <h1 className="text-center text-black capitalize font-bold text-2xl">
                 Showcase
@@ -69,11 +69,7 @@ export default function Main() {
 
             <div className="bg-white rounded-md py-4 px-7 shadow-md space-y-2 max-w-sm">
               <div className="relative w-20 h-20 mx-auto">
-                <img
-                  alt=""
-                  src="/assets/icon-3.svg"
-                  className="object-contain"
-                />
+                <img alt="" src={Icon3} className="object-contain" />
               </div>
               <h1 className="text-center text-black capitalize font-bold text-2xl">
                 Launch
@@ -102,26 +98,18 @@ export default function Main() {
             </div>
 
             <div className="relative w-80 h-80 ">
-              <img
-                alt=""
-                src="/assets/members.png"
-                className="object-contain"
-              />
+              <img alt="" src={Member} className="object-contain" />
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 space-y-10 md:space-y-0">
             <div className="">
               <div className="relative w-80 h-80 ">
-                <img
-                  alt=""
-                  src="/assets/proposal.png"
-                  className="object-contain"
-                />
+                <img alt="" src={Proposal} className="object-contain" />
               </div>
             </div>
             <div className="space-y-5">
               <div className="relative w-20 h-20">
-                <img alt="" src="/assets/icon.png" className="object-contain" />
+                <img alt="" src={Icon4} className="object-contain" />
               </div>
               <p className="capitalize font-normal text-xl md:text-3xl text-black">
                 See what our community member are working on
@@ -160,8 +148,8 @@ export default function Main() {
               let's get started!
             </button>
           </div>
-          <div className="relative w-full h-96">
-            <img alt="" src="/assets/group.png" className="object-contain" />
+          <div className="relative  h-[28rem]">
+            <img alt="" src={Group} className="object-contain" />
           </div>
         </section>
       </main>

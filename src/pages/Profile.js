@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { IoMdHeart } from "react-icons/io";
+import Explore from "../assets/explore.png";
 
 export default function Profile() {
   const {
@@ -19,13 +20,8 @@ export default function Profile() {
       <main className="w-[90%] mx-auto pt-10 pb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <section>
           <div className="relative max-w-[15rem] bg-white rounded-lg shadow-sm p-3">
-            <div className="relative overflow-auto h-40 rounded-lg">
-              <img
-                src="/assets/explore.png"
-                alt="avatar"
-                objectFit="cover"
-                className=" object-cover"
-              />
+            <div className="relative overflow-clip h-40 rounded-lg">
+              <img src={Explore} alt="avatar" className=" object-cover" />
             </div>
             <div className=" pt-5 pb-1">
               <button
