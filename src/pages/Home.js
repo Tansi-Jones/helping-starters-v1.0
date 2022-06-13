@@ -31,7 +31,7 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <div className="bg-white rounded-lg p-3 shadow-lg space-y-3 min-w-[35%]">
+          <div className="bg-white rounded-lg p-3 shadow-lg space-y-3 min-w-[28%]">
             <div className="relative overflow-clip h-[20rem] rounded-lg">
               <img src={Explore} alt="exploreimage" className="object-cover" />
             </div>

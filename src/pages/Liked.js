@@ -22,7 +22,7 @@ export default function Main() {
               />
             </div>
           </div>
-          <div className="grid grid-cols-[350px_minmax(900px,_1fr)_100px]">
+          <div className="grid gap-y-10 md:grid-cols-[350px_minmax(900px,_1fr)_100px]">
             <article className="max-w-[15rem] bg-white rounded-lg shadow-sm max-h-36 p-4 space-y-2">
               <div className="font-medium text-slate-500">
                 <a href="/">Connections on KC</a>
