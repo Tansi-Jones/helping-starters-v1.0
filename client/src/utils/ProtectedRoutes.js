@@ -9,7 +9,7 @@ const ProtectedRoutes = () => {
   return accessToken ? (
     <Outlet />
   ) : (
-    <Navigate to="/auth/login" state={{ from: location }} replace />
+    <Navigate to="/login" state={{ from: location }} replace />
   );
 };
 

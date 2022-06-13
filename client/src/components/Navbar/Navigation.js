@@ -6,6 +6,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Logo from "../../assets/logo.png";
+import { dispatch } from "react-hot-toast/dist/core/store";
+import { setCredentials } from "../../features/auth/authSlice";
+import { useUserSignInMutation } from "../../services/authApi";
 
 export const Navigation = () => {
   const [user, setUser] = useState(false);
@@ -16,12 +19,25 @@ export const Navigation = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
+  const [signIn] = useUserSignInMutation();
+
   const onSubmit = async (data) => {
-    const { email, password } = data;
+    // setIsLoading(true);
+
+    try {
+      const userData = await signIn(data).unwrap();
+      toast(userData.message);
+      dispatch(setCredentials({ ...userData }));
+
+      navigate("/home");
+      // setIsLoading(false);
+    } catch (error) {
+      // setIsLoading(false);
+      toast(error.data);
+    }
   };
 
   function open() {

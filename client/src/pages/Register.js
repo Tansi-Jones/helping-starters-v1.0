@@ -1,5 +1,9 @@
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { dispatch } from "react-hot-toast/dist/core/store";
 import { useNavigate } from "react-router-dom";
+import { setCredentials } from "../features/auth/authSlice";
+import { useUserSignUpMutation } from "../services/authApi";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -7,12 +11,26 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {};
+  const [signUp] = useUserSignUpMutation();
 
+  const onSubmit = async (data) => {
+    // setIsLoading(true);
+
+    try {
+      const userData = await signUp(data).unwrap();
+      toast(userData.message);
+      dispatch(setCredentials({ ...userData }));
+
+      navigate("/home");
+      // setIsLoading(false);
+    } catch (error) {
+      // setIsLoading(false);
+      toast(error.data);
+    }
+  };
   return (
     <>
       <main className="bg-[#EAEDF2] py-10">
