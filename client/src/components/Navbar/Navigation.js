@@ -11,7 +11,7 @@ import { setCredentials } from "../../features/auth/authSlice";
 import { useUserSignInMutation } from "../../services/authApi";
 
 export const Navigation = () => {
-  const [user] = useState(false);
+  const [user] = useState(true);
   const [isDropdown, setIsDropdown] = useState(false);
   const [modal, setModal] = useState(false);
 
