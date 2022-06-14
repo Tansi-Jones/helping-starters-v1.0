@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Liked from "./pages/Liked";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
+import CreateProject from "./pages/CreateProject";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 
 import { Navigation } from "./components/Navbar/Navigation";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/Liked" element={<Liked />} />
           <Route path="/Profile" element={<Profile />} />
+          <Route path="/create-project" element={<CreateProject />} />
         </Route>
       </Routes>
 

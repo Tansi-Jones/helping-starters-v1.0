@@ -26,7 +26,10 @@ export default function Home() {
               >
                 Explore
               </button>
-              <button className="w-full lg:w-auto block tracking-wide border border-black transition transform ease-out duration-250 uppercase text-base rounded-lg py-1 md:py-2 px-4 md:px-5 text-black hover:bg-black hover:text-white">
+              <button
+                className="w-full lg:w-auto block tracking-wide border border-black transition transform ease-out duration-250 capitalize text-base rounded-lg py-1 md:py-2 px-4 md:px-5 text-black hover:bg-black hover:text-white"
+                onClick={() => navigate("/create-project")}
+              >
                 Create Project
               </button>
             </div>

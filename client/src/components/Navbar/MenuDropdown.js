@@ -2,6 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { HiChevronDown } from "react-icons/hi";
 import { useSelector, useDispatch } from "react-redux";
+import Avatar from "../../assets/avatar.svg";
 
 import { useNavigate } from "react-router-dom";
 import { logOut, selectCurrentUser } from "../../features/auth/authSlice";
@@ -23,7 +24,7 @@ export default function MenuDropdown() {
           <Menu.Button className="inline-flex justify-center items-center space-x-1 w-full px-3 py-1 text-[15px] font-medium text-[#696F79] border border-gray-400 bg-transparent rounded-md bg-opacity-90 hover:bg-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 transition ease-in-out duration-200">
             <img
               className="h-[30px] w-[30px] rounded-full object-cover"
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+              src={Avatar}
               alt="avatar"
             />
             <span className="capitalize truncate w-16">{userName}</span>
