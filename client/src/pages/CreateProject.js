@@ -5,7 +5,6 @@ export default function Explore() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -28,6 +27,9 @@ export default function Explore() {
                   {...register("name")}
                   className="outline-none bg-slate-200 rounded-lg text-base py-2 px-4 w-full text-slate-600 "
                 />
+                {errors.name && (
+                  <p className="text-rose-600">This feild is required</p>
+                )}
               </div>
               <div className="space-y-2">
                 <p className="text-slate-500 text-base md:text-lg ">
@@ -37,6 +39,9 @@ export default function Explore() {
                   {...register("title")}
                   className="outline-none bg-slate-200 rounded-lg text-base py-2 px-4 w-full text-slate-600 "
                 />
+                {errors.title && (
+                  <p className="text-rose-600">This feild is required</p>
+                )}
               </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -48,6 +53,9 @@ export default function Explore() {
                   {...register("url")}
                   className="outline-none bg-slate-200 rounded-lg text-base py-2 px-4 w-full text-slate-600 "
                 />
+                {errors.url && (
+                  <p className="text-rose-600">This feild is required</p>
+                )}
               </div>
               <div className="space-y-2">
                 <p className="text-slate-500 text-base md:text-lg ">
@@ -57,6 +65,9 @@ export default function Explore() {
                   {...register("more")}
                   className="outline-none bg-slate-200 rounded-lg text-base py-2 px-4 w-full text-slate-600 "
                 />
+                {errors.more && (
+                  <p className="text-rose-600">This feild is required</p>
+                )}
               </div>
             </div>
             <div>
@@ -65,11 +76,14 @@ export default function Explore() {
                   Project discription
                 </p>
                 <textarea
-                  {...register("url")}
+                  {...register("description")}
                   cols="30"
                   rows="6"
                   className="outline-none bg-slate-200 rounded-lg text-base py-2 px-4 w-full text-slate-600 resize-none"
                 />
+                {errors.description && (
+                  <p className="text-rose-600">This feild is required</p>
+                )}
               </div>
             </div>
             <button className="hidden md:block cursor-pointer bg-secondary text-white py-3 px-14 rounded text-base mx-auto capitalize">
@@ -83,12 +97,13 @@ export default function Explore() {
                 <img src={Skeleton} alt="avatar" className=" object-cover" />
               </div>
               <div className=" pt-5 pb-1">
-                <button
-                  type="button"
-                  className="border border-secondary rounded text-base py-2 px-2 w-full text-secondary"
+                <label
+                  htmlFor="upload"
+                  className="border border-secondary rounded text-base py-2 px-2 w-full text-secondary block text-center cursor-pointer"
                 >
-                  Upload Avatar
-                </button>
+                  Upload Image
+                </label>
+                <input type="file" id="upload" className="hidden" />
               </div>
             </div>
           </section>
