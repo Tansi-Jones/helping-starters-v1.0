@@ -6,7 +6,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Logo from "../../assets/logo.png";
-import { dispatch } from "react-hot-toast/dist/core/store";
+import { useDispatch } from "react-redux";
 import { setCredentials } from "../../features/auth/authSlice";
 import { useUserSignInMutation } from "../../services/authApi";
 
@@ -15,6 +15,7 @@ export const Navigation = () => {
   const [modal, setModal] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,

@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { dispatch } from "react-hot-toast/dist/core/store";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../features/auth/authSlice";
 import { useUserSignUpMutation } from "../services/authApi";
 
 export default function Register() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
