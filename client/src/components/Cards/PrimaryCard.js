@@ -3,11 +3,11 @@ import Avatar from "../../assets/avatar.png";
 
 export const PrimaryCard = ({ name, followers, image, title }) => {
   return (
-    <div className="relative max-w-[16rem] bg-white rounded-lg shadow-sm">
-      <div className="relative overflow-clip h-40 rounded-t-lg">
+    <div className="relative max-w-[20rem] bg-white rounded-lg shadow-sm">
+      <div className="relative overflow-clip h-48 rounded-t-lg">
         <img src={image} alt="avatar" className="object-cover" />
       </div>
-      <div className="p-5">
+      <div className="px-5 py-8">
         <h3 className="font-semibold text-slate-800 text-base hover:text-blue-900 cursor-pointer">
           Angular - the complete guide for beginner
         </h3>
