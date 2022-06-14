@@ -1,13 +1,16 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import Skeleton from "../assets/skeleton.svg";
 
 export default function Explore() {
+  const [image, setImage] = useState("");
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  console.log(image);
   const onSubmit = () => {};
 
   return (
@@ -16,7 +19,11 @@ export default function Explore() {
         <h1 className="text-slate-600 text-xl font-bold uppercase">
           Create new project
         </h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="projectGrid">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="projectGrid"
+          enctype="multipart/form-data"
+        >
           <section className="text-slate-800 space-y-4 py-10 ">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               <div className="space-y-2">
@@ -103,7 +110,12 @@ export default function Explore() {
                 >
                   Upload Image
                 </label>
-                <input type="file" id="upload" className="hidden" />
+                <input
+                  type="file"
+                  id="upload"
+                  className="hidden"
+                  onChange={(event) => setImage(event.target.value)}
+                />
               </div>
             </div>
           </section>
