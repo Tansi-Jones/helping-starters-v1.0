@@ -104,7 +104,7 @@ export default function Explore() {
               <div className="relative overflow-clip rounded-lg h-full w-full flex items-center justify-center">
                 <img
                   src={image || Skeleton}
-                  alt="avatar"
+                  alt={image || Skeleton}
                   className="h-40 object-cover"
                 />
               </div>
