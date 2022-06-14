@@ -3,7 +3,7 @@ import cors from "cors";
 import connectDB from "./database/db.js";
 import dotenv from "dotenv";
 
-import postRoutes from "./routes/posts.js";
+import projectRoutes from "./routes/projects.js";
 import userRouter from "./routes/user.js";
 
 const app = express();
@@ -18,7 +18,7 @@ app.use(
   })
 );
 
-app.use("/api/project", postRoutes);
+app.use("/api/project", projectRoutes);
 app.use("/api/user", userRouter);
 
 const PORT = process.env.PORT || 5000;
