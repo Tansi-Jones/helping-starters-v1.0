@@ -12,6 +12,7 @@ import { useUserSignInMutation } from "../../services/authApi";
 
 export const Navigation = () => {
   const [user] = useState(false);
+  const [isDropdown, setIsDropdown] = useState(false);
   const [modal, setModal] = useState(false);
 
   const navigate = useNavigate();
@@ -95,12 +96,55 @@ export const Navigation = () => {
           </div>
         )}
 
-        <button className="block lg:hidden text-black text-3xl">
+        <button
+          className="block lg:hidden text-black text-3xl"
+          onClick={() => setIsDropdown(!isDropdown)}
+        >
           <HiMenu />
         </button>
       </nav>
 
-      {/* SIGNIN */}
+      {/* Dropdown */}
+      <aside className={isDropdown ? "w-[90%] mx-auto py-6" : "hidden"}>
+        {user ? (
+          <div className="space-y-5">
+            <div className="text-slate-600 font-medium capitalize text-base tracking-wide space-y-3">
+              {menu.map(({ id, title, href }) => (
+                <div
+                  key={id}
+                  className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-primary to-secondary cursor-pointer"
+                  onClick={() => navigate(`${href}`)}
+                >
+                  <p>{title}</p>
+                </div>
+              ))}
+            </div>
+            <MenuDropdown />
+          </div>
+        ) : (
+          <div className="space-y-5">
+            <div className="text-slate-600 font-medium capitalize text-base tracking-wide space-y-3">
+              {menu.map(({ id, title, href }) => (
+                <div
+                  key={id}
+                  className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-primary to-secondary cursor-pointer"
+                  onClick={() => navigate(`${href}`)}
+                >
+                  <p>{title}</p>
+                </div>
+              ))}
+            </div>
+            <button
+              className="tracking-wide bg-secondary transition transform ease-out duration-250 uppercase text-base rounded font-medium py-1 md:py-2 px-4 md:px-5 text-white"
+              onClick={open}
+            >
+              SIGNIN
+            </button>
+          </div>
+        )}
+      </aside>
+
+      {/* signin */}
       <section>
         <Transition appear show={modal} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={close}>
