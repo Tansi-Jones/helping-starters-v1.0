@@ -34,7 +34,7 @@ function App() {
           <Route path="/Liked" element={<Liked />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/create-project" element={<CreateProject />} />
-          <Route path="/details" element={<ProjectDetails />} />
+          <Route path="/details/:id" element={<ProjectDetails />} />
         </Route>
       </Routes>
 

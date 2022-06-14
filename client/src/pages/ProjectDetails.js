@@ -1,14 +1,11 @@
-import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Avatar from "../assets/avatar.svg";
 import HS from "../assets/hs.png";
 
 export default function Profile() {
-  const name = "Tansi";
-  const title = "Me and me";
-  const url = "forreal.online";
-  const description = "";
-  const img = ".";
+  const location = useLocation();
+
+  const { author, image, title, description, url } = location;
 
   return (
     <main className="bg-secondaryAlt">
@@ -19,7 +16,7 @@ export default function Profile() {
               Project name
             </h1>
             <img
-              src={img}
+              src={image}
               className="w-full h-96 object-cover rounded-lg hidden md:block"
               alt="card"
             />
@@ -40,19 +37,19 @@ export default function Profile() {
             </div>
             <div className="py-8">
               <img
-                src={img}
+                src={image}
                 className="w-full h-96 object-cover rounded-lg block md:hidden"
                 alt="card"
               />
             </div>
             <div className="space-y-5 pt-5">
-              {name && (
+              {author && (
                 <div className="space-y-3">
                   <p className="text-slate-500 text-base md:text-lg ">
                     Company/Team name
                   </p>
                   <div className="outline-none bg-slate-200 rounded text-base py-2 px-4 w-full text-slate-600">
-                    {name}
+                    {author}
                   </div>
                 </div>
               )}
