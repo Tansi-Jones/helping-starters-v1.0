@@ -17,7 +17,7 @@ export const PrimaryCard = ({ name, followers, image, title }) => {
       </button>
 
       <hr />
-      <div className="flex items-center justify-between px-5 py-2">
+      <div className="flex items-center justify-between px-5 py-3">
         <div className="flex space-x-3 items-center">
           <div className="relative overflow-clip h-8 w-8 rounded-full">
             <img src={Avatar} alt="avatar" className="object-cover" />
