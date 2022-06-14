@@ -35,8 +35,8 @@ export default function Profile() {
       <main className="w-[90%] mx-auto pt-10 pb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10">
         <section>
           <div className="relative max-w-[15rem] bg-white rounded-lg shadow-sm p-3">
-            <div className="relative overflow-clip h-40 rounded-lg w-40 mx-auto">
-              <img src={Avatar} alt="avatar" />
+            <div className="relative overflow-clip flex items-center justify-center rounded-lg w-40 mx-auto">
+              <img src={Avatar} alt="avatar" className="h-40" />
             </div>
             <div className=" pt-5 pb-1">
               <label

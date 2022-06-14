@@ -59,7 +59,7 @@ export const Navigation = () => {
           className="relative transform -translate-x-7 cursor-pointer"
           onClick={() => navigate("/")}
         >
-          <img src={Logo} alt="logo" className="h-16 w-48 object-cover" />
+          <img src={Logo} alt="logo" className="h-20 w-52 object-cover" />
         </div>
 
         {userID ? (

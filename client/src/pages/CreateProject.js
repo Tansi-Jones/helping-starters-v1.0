@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Skeleton from "../assets/skeleton.svg";
+import FileBase from "react-file-base64";
 
 export default function Explore() {
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
 
   const {
     register,
@@ -12,7 +13,7 @@ export default function Explore() {
   } = useForm();
   console.log(image);
   const onSubmit = () => {};
-
+  console.log(FileBase);
   return (
     <div className="bg-secondaryAlt">
       <section className="w-[90%] mx-auto pt-10">
@@ -100,8 +101,12 @@ export default function Explore() {
 
           <section>
             <div className="relative max-w-[15rem] bg-white rounded-lg shadow-sm p-3">
-              <div className="relative overflow-clip h-40 rounded-lg">
-                <img src={Skeleton} alt="avatar" className=" object-cover" />
+              <div className="relative overflow-clip rounded-lg h-full w-full flex items-center justify-center">
+                <img
+                  src={image || Skeleton}
+                  alt="avatar"
+                  className="h-40 object-cover"
+                />
               </div>
               <div className=" pt-5 pb-1">
                 <label
@@ -114,9 +119,18 @@ export default function Explore() {
                   type="file"
                   id="upload"
                   className="hidden"
-                  onChange={(event) => setImage(event.target.value)}
+                  onChange={(e) => {
+                    const imgUrl = URL.createObjectURL(e.target.files[0]);
+                    console.log(imgUrl.base64);
+                    setImage(imgUrl);
+                  }}
                 />
               </div>
+              <FileBase
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) => setImage(base64)}
+              />
             </div>
           </section>
           <button className="block md:hidden cursor-pointer bg-secondary text-white py-3 px-14 rounded text-base mx-auto capitalize my-14">

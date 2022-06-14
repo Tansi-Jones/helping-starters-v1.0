@@ -11,7 +11,7 @@ export const Footer = () => {
             className="relative transform -translate-x-7 cursor-pointer"
             onClick={() => navigate("/")}
           >
-            <img src={Logo} alt="logo" className="h-16 w-48 object-cover" />
+            <img src={Logo} alt="logo" className="h-20 w-52 object-cover" />
           </div>
           <p className="text-base">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet
