@@ -7,9 +7,17 @@ import Icon4 from "../assets/Icon.png";
 import Member from "../assets/Members.png";
 import Proposal from "../assets/Proposal.png";
 import Group from "../assets/Group.png";
+import { useSelector } from "react-redux";
+import { selectCurrentUID } from "../features/auth/authSlice";
+import { useEffect } from "react";
 
 export default function Main() {
   const navigate = useNavigate();
+  const userID = useSelector(selectCurrentUID);
+
+  useEffect(() => {
+    userID && navigate("/home");
+  });
 
   return (
     <div className="bg-[#EAEDF2]">
