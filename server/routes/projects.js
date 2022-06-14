@@ -6,10 +6,10 @@ import {
   getPostsByCreator,
   getPost,
   createPost,
-  updatePost,
-  likePost,
-  commentPost,
-  deletePost,
+  // updatePost,
+  // likePost,
+  // commentPost,
+  // deletePost,
 } from "../controllers/projects.js";
 
 const router = express.Router();
