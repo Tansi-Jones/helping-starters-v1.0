@@ -25,7 +25,7 @@ export default function Register() {
       const userData = await signUp(data).unwrap();
       toast(userData.message);
       dispatch(setCredentials({ ...userData.data }));
-
+      console.log(userData);
       navigate("/home");
       // setIsLoading(false);
     } catch (error) {

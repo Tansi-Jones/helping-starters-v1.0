@@ -6,14 +6,16 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Logo from "../../assets/logo.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../features/auth/authSlice";
 import { useUserSignInMutation } from "../../services/authApi";
+import { selectCurrentUID } from "../../features/auth/authSlice";
 
 export const Navigation = () => {
-  const [user] = useState(false);
   const [isDropdown, setIsDropdown] = useState(false);
   const [modal, setModal] = useState(false);
+
+  const userID = useSelector(selectCurrentUID);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,6 +35,8 @@ export const Navigation = () => {
       const userData = await signIn(data).unwrap();
       toast(userData.message);
       dispatch(setCredentials({ ...userData.data }));
+      setIsDropdown(false);
+      setModal(false);
       navigate("/home");
       // setIsLoading(false);
     } catch (error) {
@@ -58,7 +62,7 @@ export const Navigation = () => {
           <img src={Logo} alt="logo" className="h-16 w-48 object-cover" />
         </div>
 
-        {user ? (
+        {userID ? (
           <div className="hidden lg:flex items-center space-x-8">
             <div className="text-slate-600 font-medium capitalize text-base flex items-center space-x-8 tracking-wide">
               {menu.map(({ id, title, href }) => (
@@ -105,7 +109,7 @@ export const Navigation = () => {
 
       {/* Dropdown */}
       <aside className={isDropdown ? "w-[90%] mx-auto py-6" : "hidden"}>
-        {user ? (
+        {userID ? (
           <div className="space-y-5">
             <div className="text-slate-600 font-medium capitalize text-base tracking-wide space-y-3">
               {menu.map(({ id, title, href }) => (

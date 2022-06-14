@@ -1,16 +1,20 @@
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { HiChevronDown } from "react-icons/hi";
+import { useSelector, useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
+import { logOut, selectCurrentUser } from "../../features/auth/authSlice";
 
 export default function MenuDropdown() {
-  const [userName, setUserName] = useState("");
+  const userName = useSelector(selectCurrentUser);
 
-  const router = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const logout = async (event) => {
-    event.preventDefault();
+  const logout = () => {
+    dispatch(logOut());
+    navigate("/home");
   };
   return (
     <div className="z-50">
@@ -22,7 +26,7 @@ export default function MenuDropdown() {
               src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
               alt="avatar"
             />
-            <span className="capitalize truncate w-16">Tansi Jones</span>
+            <span className="capitalize truncate w-16">{userName}</span>
             <HiChevronDown
               className="text-xl text-[#757679c2]"
               aria-hidden="true"
@@ -46,7 +50,7 @@ export default function MenuDropdown() {
                     className={`space-x-2 ${
                       active ? "bg-gray-100 text-[#696F79]" : "text-[#696F79]"
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    onClick={() => router.push("/profile")}
+                    onClick={() => navigate("/profile")}
                   >
                     {active ? (
                       <ProfileIcon
@@ -60,30 +64,6 @@ export default function MenuDropdown() {
                       />
                     )}
                     <span>Profile</span>
-                  </button>
-                )}
-              </Menu.Item>
-
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`space-x-2 ${
-                      active ? "bg-gray-100 text-[#696F79]" : "text-[#696F79]"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                    onClick={() => router.push("/help")}
-                  >
-                    {active ? (
-                      <HelpActiveIcon
-                        className="w-5 h-5 mr-2"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <HelpInactiveIcon
-                        className="w-5 h-5 mr-2"
-                        aria-hidden="true"
-                      />
-                    )}
-                    <span>Help</span>
                   </button>
                 )}
               </Menu.Item>
@@ -165,76 +145,6 @@ function ProfileInactiveIcon() {
       />
       <path
         d="M3.35334 15.986C0.530007 17.876 0.530007 20.956 3.35334 22.8343C6.56167 24.981 11.8233 24.981 15.0317 22.8343C17.855 20.9443 17.855 17.8643 15.0317 15.986C11.835 13.851 6.57334 13.851 3.35334 15.986Z"
-        stroke="#696F79"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function HelpInactiveIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 28 28"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M19.8335 21.5017H15.1668L9.97515 24.955C9.20515 25.4683 8.16683 24.92 8.16683 23.9867V21.5017C4.66683 21.5017 2.3335 19.1684 2.3335 15.6684V8.66829C2.3335 5.16829 4.66683 2.83496 8.16683 2.83496H19.8335C23.3335 2.83496 25.6668 5.16829 25.6668 8.66829V15.6684C25.6668 19.1684 23.3335 21.5017 19.8335 21.5017Z"
-        stroke="#696F79"
-        strokeWidth="2"
-        strokeMiterlimit="10"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M14.0001 13.2529V13.008C14.0001 12.2146 14.4901 11.7946 14.9801 11.4563C15.4585 11.1296 15.9367 10.7096 15.9367 9.93964C15.9367 8.8663 15.0734 8.00293 14.0001 8.00293C12.9268 8.00293 12.0635 8.8663 12.0635 9.93964"
-        stroke="#696F79"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13.9946 16.0413H14.0051"
-        stroke="#696F79"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function HelpActiveIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 28 28"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M19.8335 21.5017H15.1668L9.97515 24.955C9.20515 25.4683 8.16683 24.92 8.16683 23.9867V21.5017C4.66683 21.5017 2.3335 19.1684 2.3335 15.6684V8.66829C2.3335 5.16829 4.66683 2.83496 8.16683 2.83496H19.8335C23.3335 2.83496 25.6668 5.16829 25.6668 8.66829V15.6684C25.6668 19.1684 23.3335 21.5017 19.8335 21.5017Z"
-        stroke="#696F79"
-        strokeWidth="2"
-        strokeMiterlimit="10"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M14.0001 13.2529V13.008C14.0001 12.2146 14.4901 11.7946 14.9801 11.4563C15.4585 11.1296 15.9367 10.7096 15.9367 9.93964C15.9367 8.8663 15.0734 8.00293 14.0001 8.00293C12.9268 8.00293 12.0635 8.8663 12.0635 9.93964"
-        stroke="#696F79"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13.9946 16.0413H14.0051"
         stroke="#696F79"
         strokeWidth="2"
         strokeLinecap="round"

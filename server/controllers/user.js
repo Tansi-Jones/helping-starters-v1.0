@@ -52,14 +52,14 @@ export const signUp = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const result = User.create({
+    const newUser = User.create({
       email,
       password: hashedPassword,
-      name: `${name} `,
+      name: name,
     });
 
     const token = jwt.sign(
-      { email: result.email, id: result._id },
+      { email: newUser.email, id: newUser._id },
       process.env.JWT_SECRET_KEY,
       { expiresIn: "1h" }
     );
@@ -67,7 +67,7 @@ export const signUp = async (req, res) => {
     res.status(200).json({
       status: "Success",
       message: "✅ Account created",
-      data: existingUser,
+      data: newUser,
       token,
     });
   } catch (error) {
