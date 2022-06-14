@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import Skeleton from "../assets/skeleton.svg";
 
 export default function Explore() {
   const {
@@ -12,15 +13,12 @@ export default function Explore() {
 
   return (
     <div className="bg-secondaryAlt">
-      <section>
-        <div>
-          <h1 className="text-slate-600 text-xl font-bold uppercase">
-            Create new project
-          </h1>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="text-slate-800 space-y-4"
-          >
+      <section className="w-[90%] mx-auto pt-10">
+        <h1 className="text-slate-600 text-xl font-bold uppercase">
+          Create new project
+        </h1>
+        <form onSubmit={handleSubmit(onSubmit)} className="projectGrid">
+          <section className="text-slate-800 space-y-4 py-10 ">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               <div className="space-y-2">
                 <p className="text-slate-500 text-base md:text-lg ">
@@ -74,12 +72,30 @@ export default function Explore() {
                 />
               </div>
             </div>
-            <button className="cursor-pointer bg-secondary text-white py-3 px-14 rounded text-base block mx-auto capitalize">
+            <button className="hidden md:block cursor-pointer bg-secondary text-white py-3 px-14 rounded text-base mx-auto capitalize">
               Create Project
             </button>
-          </form>
-        </div>
-        <div></div>
+          </section>
+
+          <section>
+            <div className="relative max-w-[15rem] bg-white rounded-lg shadow-sm p-3">
+              <div className="relative overflow-clip h-40 rounded-lg">
+                <img src={Skeleton} alt="avatar" className=" object-cover" />
+              </div>
+              <div className=" pt-5 pb-1">
+                <button
+                  type="button"
+                  className="border border-secondary rounded text-base py-2 px-2 w-full text-secondary"
+                >
+                  Upload Avatar
+                </button>
+              </div>
+            </div>
+          </section>
+          <button className="block md:hidden cursor-pointer bg-secondary text-white py-3 px-14 rounded text-base mx-auto capitalize my-14">
+            Create Project
+          </button>
+        </form>
       </section>
     </div>
   );
