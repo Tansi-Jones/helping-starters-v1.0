@@ -26,7 +26,7 @@ export default function Home() {
                 Explore
               </button>
               <button
-                className="w-full lg:w-auto block tracking-wide border border-black transition transform ease-out duration-250 capitalize text-base rounded-lg py-3 px-4 md:px-5 text-black hover:bg-black hover:text-white"
+                className="w-full lg:w-auto block tracking-wide border border-black transition transform ease-out duration-250 capitalize text-base rounded-lg py-3 px-4 md:px-5 text-black "
                 onClick={() => navigate("/create-project")}
               >
                 Create Project
@@ -39,49 +39,55 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-8 py-10 bg-[#454545] rounded-xl space-y-5 my-16">
-          <div className="flex items-center justify-between text-white font-bold pb-0">
-            {/* <p className=" text-lg lg:text-xl">View all</p> */}
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
-            {DataSome.map(({ id, title, image, followers }) => {
-              return (
-                <SecondaryCard
-                  key={id}
-                  followers={followers}
-                  title={title}
-                  image={image}
-                  color="white"
-                />
-              );
-            })}
-          </div>
-        </section>
+        {DataSome && (
+          <section className="px-8 py-10 bg-[#454545] rounded-xl space-y-5 my-16">
+            <div className="flex items-center justify-between text-white font-bold pb-0">
+              {/* <p className=" text-lg lg:text-xl">View all</p> */}
+            </div>
+            <div className="flex flex-col items-center md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
+              {DataSome.map(({ id, title, image, followers }) => {
+                return (
+                  <SecondaryCard
+                    key={id}
+                    followers={followers}
+                    title={title}
+                    image={image}
+                    color="white"
+                  />
+                );
+              })}
+            </div>
+          </section>
+        )}
 
-        <section className="px-8 py-10 rounded-xl space-y-5 mt-20 mb-14 bg-[#EAEDF2]">
-          <div className="flex items-center justify-between text-black font-bold pb-5">
-            <h1 className=" text-2xl lg:text-3xl ">DISCOVER</h1>
-            <p className=" text-lg lg:text-xl">View all</p>
+        {DataAll && (
+          <section className="px-8 py-10 rounded-xl space-y-5 mt-20 mb-14 bg-[#EAEDF2]">
+            <div className="flex items-center justify-between text-black font-bold pb-5">
+              <h1 className=" text-2xl lg:text-3xl ">DISCOVER</h1>
+              <p className=" text-lg lg:text-xl">View all</p>
+            </div>
+            <div className="flex flex-col items-center md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
+              {DataAll.map(({ id, title, image, followers }) => {
+                return (
+                  <SecondaryCard
+                    key={id}
+                    followers={followers}
+                    title={title}
+                    image={image}
+                    color="black"
+                  />
+                );
+              })}
+            </div>
+          </section>
+        )}
+        {DataAll.length > 10 && (
+          <div className="flex items-center justify-center py-10">
+            <button className="w-auto block tracking-wide border border-black transition transform ease-out duration-250 uppercase text-base rounded-md py-2 px-8 text-black">
+              Load more
+            </button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
-            {DataAll.map(({ id, title, image, followers }) => {
-              return (
-                <SecondaryCard
-                  key={id}
-                  followers={followers}
-                  title={title}
-                  image={image}
-                  color="black"
-                />
-              );
-            })}
-          </div>
-        </section>
-        <div className="flex items-center justify-center py-10">
-          <button className="w-full lg:w-auto block tracking-wide border border-black transition transform ease-out duration-250 uppercase text-base rounded-lg py-1 md:py-2 px-4 md:px-5 text-black hover:bg-black hover:text-white">
-            Load more
-          </button>
-        </div>
+        )}
       </main>
     </>
   );
