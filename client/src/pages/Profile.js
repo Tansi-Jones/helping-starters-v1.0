@@ -45,11 +45,11 @@ export default function Profile() {
             <div className=" pt-5 pb-1">
               <label
                 htmlFor="upload"
-                className="border border-secondary rounded text-base py-2 px-2 w-full text-secondary block text-center cursor-pointer"
+                className="border border-secondary rounded text-base py-2 px-2 w-full text-secondary block text-center cursor-not-allowed"
               >
                 Upload Avatar
               </label>
-              <input type="file" id="upload" className="hidden" />
+              <input type="file" id="upload" className="hidden" disabled />
             </div>
           </div>
         </section>
