@@ -2,8 +2,7 @@ import { SecondaryCard } from "../components/Cards/SecondaryCard";
 import { DataAll } from "../constant/dataAll";
 import { DataSome } from "../constant/dataSome";
 import { useNavigate } from "react-router-dom";
-import Explore from "../assets/explore.png";
-import Avatar from "../assets/avatar.png";
+import Card from "../assets/card.svg";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -11,44 +10,32 @@ export default function Home() {
     <>
       <main className="w-[90%] mx-auto mt-10">
         <section className="flex lg:flex-row flex-col lg:items-center justify-between gap-8">
-          <div className="space-y-5 lg:max-w-lg xl:max-w-xl">
-            <h1 className="text-2xl md:text-5xl font-bold capitalize">
+          <div className="space-y-5 max-w-none lg:max-w-2xl xl:max-w-3xl">
+            <h1 className="text-3xl md:text-6xl font-bold capitalize">
               Find out what is trending in our community and contribute
             </h1>
-            <p>
+            <p className="text-lg md:text-2xl">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est ex
               maiores magni nulla non?
             </p>
             <div className="flex space-x-5">
               <button
-                className="w-full lg:w-auto block tracking-wide text-base rounded-lg py-1 md:py-2 px-4 md:px-12 text-white bg-gradient-to-r from-primary to-secondary"
+                className="w-full lg:w-auto block tracking-wide text-base rounded-lg py-3 px-4 md:px-12 text-white bg-gradient-to-r from-primary to-secondary"
                 onClick={() => navigate("/explore")}
               >
                 Explore
               </button>
               <button
-                className="w-full lg:w-auto block tracking-wide border border-black transition transform ease-out duration-250 capitalize text-base rounded-lg py-1 md:py-2 px-4 md:px-5 text-black hover:bg-black hover:text-white"
+                className="w-full lg:w-auto block tracking-wide border border-black transition transform ease-out duration-250 capitalize text-base rounded-lg py-3 px-4 md:px-5 text-black hover:bg-black hover:text-white"
                 onClick={() => navigate("/create-project")}
               >
                 Create Project
               </button>
             </div>
           </div>
-          <div className="bg-white rounded-lg p-3 shadow-lg space-y-3 min-w-[28%]">
-            <div className="relative overflow-clip h-[20rem] rounded-lg">
-              <img src={Explore} alt="exploreimage" className="object-cover" />
-            </div>
-            <div className="">
-              <div className="flex space-x-3">
-                <div className="relative overflow-clip h-12 w-12 mt-1">
-                  <img src={Avatar} alt="avatar" className="object-cover" />
-                </div>
-                <div className="">
-                  <h3 className="text-lg">Connect with Laura on KC</h3>
-                  <p className="text-xs">Lorem ipsum dolor sit amet,</p>
-                </div>
-              </div>
-            </div>
+
+          <div className="hidden lg:block  h-[35rem] w-[35rem] object-cover transform md:-translate-y-16">
+            <img src={Card} alt={Card} />
           </div>
         </section>
 
