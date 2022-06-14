@@ -12,7 +12,9 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import { authApi } from "../services/authApi";
+import { projectApi } from "../services/projectApi";
 import authReducer from "../features/auth/authSlice";
+import projectReducer from "../features/projectSlice";
 
 const persistConfig = {
   key: "root",
@@ -24,7 +26,9 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
   reducer: {
     [authApi.reducerPath]: authApi.reducer,
+    [projectApi.reducerPath]: projectApi.reducer,
     auth: persistedReducer,
+    project: projectReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
