@@ -13,11 +13,7 @@ export default function Profile() {
   const [handle, setHandle] = useState();
   const user = useSelector(selectCurrentUser);
   const email = useSelector(selectCurrentEmail);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
