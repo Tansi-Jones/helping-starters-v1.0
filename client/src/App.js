@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import CreateProject from "./pages/CreateProject";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
+import ProjectDetails from "./pages/ProjectDetails";
 
 import { Navigation } from "./components/Navbar/Navigation";
 import { Footer } from "./components/Footer/Footer";
@@ -33,6 +34,7 @@ function App() {
           <Route path="/Liked" element={<Liked />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/create-project" element={<CreateProject />} />
+          <Route path="/details" element={<ProjectDetails />} />
         </Route>
       </Routes>
 
