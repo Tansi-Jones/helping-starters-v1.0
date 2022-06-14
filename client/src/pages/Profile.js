@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoMdHeart } from "react-icons/io";
 import { useSelector } from "react-redux";
@@ -9,9 +10,9 @@ import {
 } from "../features/auth/authSlice";
 
 export default function Profile() {
+  const [handle, setHandle] = useState();
   const user = useSelector(selectCurrentUser);
   const email = useSelector(selectCurrentEmail);
-  const handle = useSelector(selectCurrentUser);
   const {
     register,
     handleSubmit,
@@ -20,6 +21,16 @@ export default function Profile() {
 
   const onSubmit = (data) => {
     console.log(data);
+  };
+
+  useEffect(() => {
+    slitUserName(user);
+  });
+
+  // slit user name
+  const slitUserName = (name) => {
+    const user = name.split(" ");
+    return setHandle(user[0]);
   };
 
   return (
@@ -55,7 +66,7 @@ export default function Profile() {
                 {...register("handle")}
                 value={`@${handle}`}
                 disabled
-                className="outline-none bg-slate-200 rounded text-base py-2 px-4 w-full text-slate-600 cursor-not-allowed"
+                className="lowercase outline-none bg-slate-200 rounded text-base py-2 px-4 w-full text-slate-600 cursor-not-allowed"
               />
             </div>
             <div className="space-y-2">
