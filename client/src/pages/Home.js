@@ -39,7 +39,7 @@ export default function Home() {
           </div>
         </section>
 
-        {DataSome && (
+        {DataSome.length >= 1 && (
           <section className="px-8 py-10 bg-[#454545] rounded-xl space-y-5 my-16">
             <div className="flex items-center justify-between text-white font-bold pb-0">
               {/* <p className=" text-lg lg:text-xl">View all</p> */}
@@ -60,7 +60,7 @@ export default function Home() {
           </section>
         )}
 
-        {DataAll && (
+        {DataAll.length >= 1 && (
           <section className="px-8 py-10 rounded-xl space-y-5 mt-20 mb-14 bg-[#EAEDF2]">
             <div className="flex items-center justify-between text-black font-bold pb-5">
               <h1 className=" text-2xl lg:text-3xl ">DISCOVER</h1>
