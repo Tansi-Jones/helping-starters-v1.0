@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <main className="w-[90%] mx-auto mt-10">
-        <section className="flex lg:flex-row flex-col lg:items-center justify-between gap-8">
+        <section className="flex lg:flex-row flex-col lg:items-center justify-between gap-8 pb-20">
           <div className="space-y-5 max-w-none lg:max-w-2xl xl:max-w-3xl">
             <h1 className="text-3xl md:text-6xl font-bold capitalize">
               Find out what is trending in our community and contribute
