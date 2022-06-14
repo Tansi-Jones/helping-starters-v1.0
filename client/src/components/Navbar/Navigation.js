@@ -11,7 +11,7 @@ import { setCredentials } from "../../features/auth/authSlice";
 import { useUserSignInMutation } from "../../services/authApi";
 
 export const Navigation = () => {
-  const [user] = useState(true);
+  const [user] = useState(false);
   const [isDropdown, setIsDropdown] = useState(false);
   const [modal, setModal] = useState(false);
 
@@ -32,8 +32,7 @@ export const Navigation = () => {
     try {
       const userData = await signIn(data).unwrap();
       toast(userData.message);
-      dispatch(setCredentials({ ...userData }));
-
+      dispatch(setCredentials({ ...userData.data }));
       navigate("/home");
       // setIsLoading(false);
     } catch (error) {

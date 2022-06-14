@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { ImSpinner2 } from "react-icons/im";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../features/auth/authSlice";
@@ -23,15 +24,16 @@ export default function Register() {
     try {
       const userData = await signUp(data).unwrap();
       toast(userData.message);
-      dispatch(setCredentials({ ...userData }));
+      dispatch(setCredentials({ ...userData.data }));
 
       navigate("/home");
       // setIsLoading(false);
     } catch (error) {
       // setIsLoading(false);
-      toast(error.data);
+      toast(error.data.message);
     }
   };
+
   return (
     <>
       <main className="bg-[#EAEDF2] py-10">
