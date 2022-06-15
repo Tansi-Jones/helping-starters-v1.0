@@ -33,7 +33,7 @@ export const signIn = async (req, res) => {
       token,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(404).json({
       status: "Failed",
       message: "❌ SignIn Failed",
       data: error,
