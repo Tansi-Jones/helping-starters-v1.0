@@ -1,7 +1,7 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
 
-// export const url = "https://0ma3z85s0l.execute-api.us-east-2.amazonaws.com";
-export const url = "http://localhost:5000/api";
+export const url = "https://0ma3z85s0l.execute-api.us-east-2.amazonaws.com/api";
+// export const url = "http://localhost:5000/api";
 
 export const baseQuery = fetchBaseQuery({
   baseUrl: url,
