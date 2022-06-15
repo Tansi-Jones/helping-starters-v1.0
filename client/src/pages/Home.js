@@ -2,10 +2,13 @@ import { SecondaryCard } from "../components/Cards/SecondaryCard";
 import { DataAll } from "../constant/dataAll";
 import { DataSome } from "../constant/dataSome";
 import { useNavigate } from "react-router-dom";
+import { useGetProjectsQuery } from "../services/projectApi";
 import Card from "../assets/card.svg";
 
 export default function Home() {
   const navigate = useNavigate();
+  const { data, isLoading } = useGetProjectsQuery();
+
   return (
     <>
       <main className="w-[90%] mx-auto mt-10">
@@ -39,48 +42,33 @@ export default function Home() {
           </div>
         </section>
 
-        {DataSome.length >= 1 && (
-          <section className="px-8 py-10 bg-[#454545] rounded-xl space-y-5 my-16">
-            <div className="flex items-center justify-between text-white font-bold pb-0">
-              {/* <p className=" text-lg lg:text-xl">View all</p> */}
-            </div>
-            <div className="flex flex-col items-center md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
-              {DataSome.map(({ id, title, image, followers }) => {
-                return (
-                  <SecondaryCard
-                    key={id}
-                    followers={followers}
-                    title={title}
-                    image={image}
-                    color="white"
-                  />
-                );
-              })}
-            </div>
-          </section>
-        )}
+        <section className="px-8 py-10 bg-[#454545] rounded-xl space-y-5 my-16">
+          <div className="flex items-center justify-between text-white font-bold pb-0">
+            {/* <p className=" text-lg lg:text-xl">View all</p> */}
+          </div>
+          <div className="flex flex-col items-center md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
+            {isLoading
+              ? "...Loading"
+              : data.projects.map((data, index) => {
+                  return <SecondaryCard key={index} {...data} color="white" />;
+                })}
+          </div>
+        </section>
 
-        {DataAll.length >= 1 && (
-          <section className="px-8 py-10 rounded-xl space-y-5 mt-20 mb-14 bg-[#EAEDF2]">
-            <div className="flex items-center justify-between text-black font-bold pb-5">
-              <h1 className=" text-2xl lg:text-3xl ">DISCOVER</h1>
-              <p className=" text-lg lg:text-xl">View all</p>
-            </div>
-            <div className="flex flex-col items-center md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
-              {DataAll.map(({ id, title, image, followers }) => {
-                return (
-                  <SecondaryCard
-                    key={id}
-                    followers={followers}
-                    title={title}
-                    image={image}
-                    color="black"
-                  />
-                );
-              })}
-            </div>
-          </section>
-        )}
+        <section className="px-8 py-10 rounded-xl space-y-5 mt-20 mb-14 bg-[#EAEDF2]">
+          <div className="flex items-center justify-between text-black font-bold pb-5">
+            <h1 className=" text-2xl lg:text-3xl ">DISCOVER</h1>
+            <p className=" text-lg lg:text-xl">View all</p>
+          </div>
+          <div className="flex flex-col items-center md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
+            {isLoading
+              ? "...Loading"
+              : data.projects.map((data, index) => {
+                  return <SecondaryCard key={index} {...data} color="black" />;
+                })}
+          </div>
+        </section>
+
         {DataAll.length > 10 && (
           <div className="flex items-center justify-center py-10">
             <button className="w-auto block tracking-wide border border-black transition transform ease-out duration-250 uppercase text-base rounded-md py-2 px-8 text-black">

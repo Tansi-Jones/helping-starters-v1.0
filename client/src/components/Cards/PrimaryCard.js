@@ -28,7 +28,7 @@ export const PrimaryCard = ({
           <img src={image} alt="avatar" className="object-cover h-full" />
         </div>
         <div className="px-5 py-5">
-          <h3 className="font-semibold text-slate-800 text-lg hover:text-blue-900 cursor-pointer ">
+          <h3 className="font-semibold text-slate-800 text-lg hover:text-blue-900 cursor-pointer truncate">
             {title}
           </h3>
         </div>
