@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ImSpinner2 } from "react-icons/im";
@@ -7,6 +8,7 @@ import { setCredentials } from "../features/auth/authSlice";
 import { useUserSignUpMutation } from "../services/authApi";
 
 export default function Register() {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -19,7 +21,7 @@ export default function Register() {
   const [signUp] = useUserSignUpMutation();
 
   const onSubmit = async (data) => {
-    // setIsLoading(true);
+    setIsLoading(true);
 
     try {
       const userData = await signUp(data).unwrap();
@@ -27,9 +29,9 @@ export default function Register() {
       dispatch(setCredentials({ ...userData.data }));
       console.log(userData);
       navigate("/home");
-      // setIsLoading(false);
+      setIsLoading(false);
     } catch (error) {
-      // setIsLoading(false);
+      setIsLoading(false);
       toast(error.data.message);
     }
   };
@@ -82,8 +84,9 @@ export default function Register() {
               )}
             </div>
 
-            <button className="w-full cursor-pointer bg-secondary text-white p-4 rounded text-base block mx-auto capitalize">
-              Sign up
+            <button className="w-full space-x-3 flex items-center justify-center cursor-pointer bg-secondary text-white p-4 rounded text-base  mx-auto capitalize">
+              <span>Sign up</span>
+              {isLoading && <ImSpinner2 className="text-white animate-spin " />}
             </button>
             <p className="text-slate-600 text-xs">
               By signing up, you agree to our

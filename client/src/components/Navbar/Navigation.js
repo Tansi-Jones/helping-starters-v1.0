@@ -6,12 +6,14 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Logo from "../../assets/logo.png";
+import { ImSpinner2 } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../features/auth/authSlice";
 import { useUserSignInMutation } from "../../services/authApi";
 import { selectCurrentUID } from "../../features/auth/authSlice";
 
 export const Navigation = () => {
+  const [isLoading, setIsLoading] = useState();
   const [isDropdown, setIsDropdown] = useState(false);
   const [modal, setModal] = useState(false);
 
@@ -29,18 +31,21 @@ export const Navigation = () => {
   const [signIn] = useUserSignInMutation();
 
   const onSubmit = async (data) => {
-    // setIsLoading(true);
+    setIsLoading(true);
 
     try {
       const userData = await signIn(data).unwrap();
       toast(userData.message);
-      dispatch(setCredentials({ ...userData.data }));
+      dispatch(
+        setCredentials({ ...userData.data, accessToken: userData.token })
+      );
+
       setIsDropdown(false);
       setModal(false);
       navigate("/home");
-      // setIsLoading(false);
+      setIsLoading(false);
     } catch (error) {
-      // setIsLoading(false);
+      setIsLoading(false);
       toast(error.data.message);
     }
   };
@@ -226,9 +231,12 @@ export const Navigation = () => {
 
                       <button
                         type="submit"
-                        className="cursor-pointer bg-secondary text-white p-3 rounded w-full text-base block mx-auto"
+                        className="flex items-center justify-center space-x-3  cursor-pointer bg-secondary text-white p-3 rounded w-full text-base  mx-auto"
                       >
-                        Sign in
+                        <span>Sign in</span>
+                        {isLoading && (
+                          <ImSpinner2 className="text-white animate-spin " />
+                        )}
                       </button>
 
                       {/* <p className="text-center">

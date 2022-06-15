@@ -1,25 +1,25 @@
 import express from "express";
 import mongoose from "mongoose";
 
-import PostMessage from "../models/postModel.js";
+import ProjectModel from "../models/projectModel.js";
 
 const router = express.Router();
 
-export const getPosts = async (req, res) => {
+export const getProjects = async (req, res) => {
   const { page } = req.query;
 
   try {
     const LIMIT = 8;
     const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
 
-    const total = await PostMessage.countDocuments({});
-    const posts = await PostMessage.find()
+    const total = await ProjectModel.countDocuments({});
+    const projects = await ProjectModel.find()
       .sort({ _id: -1 })
       .limit(LIMIT)
       .skip(startIndex);
 
     res.json({
-      data: posts,
+      projects,
       currentPage: Number(page),
       numberOfPages: Math.ceil(total / LIMIT),
     });
@@ -28,59 +28,59 @@ export const getPosts = async (req, res) => {
   }
 };
 
-export const getPostsBySearch = async (req, res) => {
+export const getProjectsBySearch = async (req, res) => {
   const { searchQuery, tags } = req.query;
 
   try {
     const title = new RegExp(searchQuery, "i");
 
-    const posts = await PostMessage.find({
+    const projects = await ProjectModel.find({
       $or: [{ title }, { tags: { $in: tags.split(",") } }],
     });
 
-    res.json({ data: posts });
+    res.json({ data: projects });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
 
-export const getPostsByCreator = async (req, res) => {
+export const getProjectsByCreator = async (req, res) => {
   const { name } = req.query;
 
   try {
-    const posts = await PostMessage.find({ name });
+    const projects = await ProjectModel.find({ name });
 
-    res.json({ data: posts });
+    res.json({ data: projects });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
 
-export const getPost = async (req, res) => {
+export const getProject = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const post = await PostMessage.findById(id);
+    const project = await ProjectModel.findById(id);
 
-    res.status(200).json(post);
+    res.status(200).json(project);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
 
-export const createPost = async (req, res) => {
-  const post = req.body;
+export const createProject = async (req, res) => {
+  const project = req.body;
 
-  const newPostMessage = new PostMessage({
-    ...post,
+  const newProject = new ProjectModel({
+    ...project,
     creator: req.userId,
     createdAt: new Date().toISOString(),
   });
 
   try {
-    await newPostMessage.save();
+    await newProject.save();
 
-    res.status(201).json(newPostMessage);
+    res.status(201).json({ newProject, message: "✅ Project Created" });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

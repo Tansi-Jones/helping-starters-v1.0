@@ -1,8 +1,11 @@
 import { HiSearch } from "react-icons/hi";
 import { PrimaryCard } from "../components/Cards/PrimaryCard";
-import { DataExplore } from "../constant/dataExplore";
+
+import { useGetProjectsQuery } from "../services/projectApi";
 
 export default function Explore() {
+  const { data, error, isLoading } = useGetProjectsQuery();
+
   return (
     <div className="bg-secondaryAlt">
       <main className="w-[90%] mx-auto pt-10 pb-16">
@@ -21,16 +24,11 @@ export default function Explore() {
             </div>
           </div>
           <div className="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 items-center justify-center">
-            {DataExplore.map(({ id, name, image, followers }) => {
-              return (
-                <PrimaryCard
-                  key={id}
-                  followers={followers}
-                  name={name}
-                  image={image}
-                />
-              );
-            })}
+            {isLoading
+              ? "...Loading"
+              : data.projects.map((data, index) => {
+                  return <PrimaryCard key={index} {...data} />;
+                })}
           </div>
         </section>
       </main>
