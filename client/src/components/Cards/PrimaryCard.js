@@ -7,13 +7,13 @@ export const PrimaryCard = ({
   image,
   title,
   description,
-  id,
+  _id,
   url,
   company_teamName,
 }) => {
   return (
     <Link
-      to={`/details/${id}`}
+      to={`/details/${_id}`}
       state={{
         author: author,
         image: image,
@@ -25,10 +25,10 @@ export const PrimaryCard = ({
     >
       <div className="relative max-w-[20rem] bg-white rounded-lg shadow-sm">
         <div className="relative overflow-clip h-48 rounded-t-lg">
-          <img src={image} alt="avatar" className="object-cover" />
+          <img src={image} alt="avatar" className="object-cover h-full" />
         </div>
-        <div className="px-5 py-8">
-          <h3 className="font-semibold text-slate-800 text-base hover:text-blue-900 cursor-pointer">
+        <div className="px-5 py-5">
+          <h3 className="font-semibold text-slate-800 text-lg hover:text-blue-900 cursor-pointer ">
             {title}
           </h3>
         </div>
@@ -40,7 +40,11 @@ export const PrimaryCard = ({
         <div className="flex items-center justify-between px-5 py-3">
           <div className="flex space-x-3 items-center">
             <div className="relative overflow-clip h-8 w-8 rounded-full">
-              <img src={Avatar} alt="avatar" className="object-cover" />
+              <img
+                src={image}
+                alt="avatar"
+                className="object-cover h-full w-full"
+              />
             </div>
             <div className="">
               <h3 className="text-sm text-slate-500 ">{author}</h3>

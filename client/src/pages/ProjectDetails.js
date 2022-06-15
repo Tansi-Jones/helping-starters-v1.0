@@ -1,11 +1,12 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Avatar from "../assets/avatar.svg";
 import HS from "../assets/hs.png";
 
 export default function Profile() {
   const location = useLocation();
 
-  const { author, image, title, description, url } = location;
+  const { author, image, title, description, url, company_teamName } =
+    location.state;
 
   return (
     <main className="bg-secondaryAlt">
@@ -13,7 +14,7 @@ export default function Profile() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-32 pb-10">
           <section className="space-y-6">
             <h1 className="text-slate-600 text-3xl font-bold uppercase">
-              Project name
+              {title}
             </h1>
             <img
               src={image}
@@ -27,13 +28,15 @@ export default function Profile() {
                 <img src={Avatar} alt="avatar" />
               </div>
 
-              <div className="flex items-center justify-center space-x-2 text-slate-600 text-base font-medium">
-                <div className="relative w-7 h-7 mt-3">
-                  <img alt="hs" src={HS} className="object-cover" />
-                </div>
+              <Link to="#">
+                <div className="flex items-center justify-center space-x-2 text-slate-600 text-base font-medium">
+                  <div className="relative w-7 h-7 mt-3">
+                    <img alt="hs" src={HS} className="object-cover" />
+                  </div>
 
-                <p className="text-sm pt-5">Connect on KC</p>
-              </div>
+                  <p className="text-sm pt-5">Connect on KC</p>
+                </div>
+              </Link>
             </div>
             <div className="py-8">
               <img
@@ -43,30 +46,28 @@ export default function Profile() {
               />
             </div>
             <div className="space-y-5 pt-5">
-              {author && (
+              {company_teamName && (
                 <div className="space-y-3">
                   <p className="text-slate-500 text-base md:text-lg ">
-                    Company/Team name
+                    Company | Team name
                   </p>
                   <div className="outline-none bg-slate-200 rounded text-base py-2 px-4 w-full text-slate-600">
-                    {author}
+                    {company_teamName}
                   </div>
                 </div>
               )}
-              {title && (
+              {author && (
                 <div className="space-y-3">
-                  <p className="text-slate-500 text-base md:text-lg ">
-                    Project Title
-                  </p>
+                  <p className="text-slate-500 text-base md:text-lg ">Author</p>
                   <div className="outline-none bg-slate-200 rounded text-base py-2 px-4 w-full text-slate-600">
-                    {title}
+                    {author}
                   </div>
                 </div>
               )}
               {url && (
                 <div className="space-y-3">
                   <p className="text-slate-500 text-base md:text-lg ">
-                    Url/Website
+                    Url | Website
                   </p>
                   <div className="outline-none bg-slate-200 rounded text-base py-2 px-4 w-full text-slate-600">
                     {url}

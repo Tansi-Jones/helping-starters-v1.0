@@ -5,7 +5,7 @@ import { useGetProjectsQuery } from "../services/projectApi";
 
 export default function Explore() {
   const { data, isLoading } = useGetProjectsQuery();
-
+  console.log(data);
   return (
     <div className="bg-secondaryAlt">
       <main className="w-[90%] mx-auto pt-10 pb-16">
