@@ -11,9 +11,9 @@ export default function Explore() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  console.log(image);
-  const onSubmit = () => {};
-  console.log(FileBase);
+
+  const onSubmit = (data) => {};
+
   return (
     <div className="bg-secondaryAlt">
       <section className="w-[90%] mx-auto pt-10">
@@ -108,7 +108,7 @@ export default function Explore() {
                   className="h-40 object-cover"
                 />
               </div>
-              <div className=" pt-5 pb-1">
+              {/* <div className=" pt-5 pb-1">
                 <label
                   htmlFor="upload"
                   className="border border-secondary rounded text-base py-2 px-2 w-full text-secondary block text-center cursor-pointer"
@@ -121,11 +121,10 @@ export default function Explore() {
                   className="hidden"
                   onChange={(e) => {
                     const imgUrl = URL.createObjectURL(e.target.files[0]);
-                    console.log(imgUrl.base64);
                     setImage(imgUrl);
                   }}
                 />
-              </div>
+              </div> */}
               <FileBase
                 type="file"
                 multiple={false}
