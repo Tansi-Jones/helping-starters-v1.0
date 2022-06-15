@@ -73,7 +73,7 @@ export const createProject = async (req, res) => {
 
   const newProject = new ProjectModel({
     ...project,
-    creator: req.userId,
+    author: req.userId,
     createdAt: new Date().toISOString(),
   });
 
