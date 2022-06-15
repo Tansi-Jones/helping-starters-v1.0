@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoMdHeart } from "react-icons/io";
+import { IoGridOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Avatar from "../assets/avatar.svg";
@@ -98,12 +99,21 @@ export default function Profile() {
         {/*  */}
         <section className="justify-self-start lg:justify-self-end w-72">
           <p className="text-slate-500 text-base pb-4">Your data</p>
+          <Link to="/projects">
+            <div className="bg-white rounded-xl flex space-x-5 items-center py-3 px-4 mt-3">
+              <IoGridOutline className="bg-blue-500 text-blue-500 text-5xl p-3 rounded-xl bg-opacity-30" />
+              <div>
+                <h1 className="text-secondary font-semibold text-2xl">{0}</h1>
+                <p className="text-slate-500 text-sm">My Projects</p>
+              </div>
+            </div>
+          </Link>
           <Link to="/liked">
-            <div className="bg-white rounded-xl flex space-x-5 items-center py-3 px-4">
+            <div className="bg-white rounded-xl flex space-x-5 items-center py-3 px-4 mt-3">
               <IoMdHeart className="bg-rose-500 text-rose-500 text-5xl p-3 rounded-xl bg-opacity-30" />
               <div>
                 <h1 className="text-secondary font-semibold text-2xl">{0}</h1>
-                <p className="text-slate-500 text-sm">Projects you like</p>
+                <p className="text-slate-500 text-sm">Liked Projects</p>
               </div>
             </div>
           </Link>
