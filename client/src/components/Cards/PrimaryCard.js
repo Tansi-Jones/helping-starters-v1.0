@@ -2,7 +2,15 @@ import { HiDotsVertical } from "react-icons/hi";
 import Avatar from "../../assets/avatar.png";
 import { Link } from "react-router-dom";
 
-export const PrimaryCard = ({ author, image, title, description, id, url }) => {
+export const PrimaryCard = ({
+  author,
+  image,
+  title,
+  description,
+  id,
+  url,
+  company_teamName,
+}) => {
   return (
     <Link
       to={`/details/${id}`}
@@ -12,6 +20,7 @@ export const PrimaryCard = ({ author, image, title, description, id, url }) => {
         title: title,
         description: description,
         url: url,
+        company_teamName: company_teamName,
       }}
     >
       <div className="relative max-w-[20rem] bg-white rounded-lg shadow-sm">
