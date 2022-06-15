@@ -28,15 +28,13 @@ export default function Profile() {
                 <img src={Avatar} alt="avatar" />
               </div>
 
-              <Link to="#">
-                <div className="flex items-center justify-center space-x-2 text-slate-600 text-base font-medium">
-                  <div className="relative w-7 h-7 mt-3">
-                    <img alt="hs" src={HS} className="object-cover" />
-                  </div>
-
-                  <p className="text-sm pt-5">Connect on KC</p>
+              <div className="flex items-center justify-center space-x-2 text-slate-600 text-base font-medium">
+                <div className="relative w-7 h-7 mt-3">
+                  <img alt="hs" src={HS} className="object-cover" />
                 </div>
-              </Link>
+
+                <p className="text-sm pt-5">Connect on KC</p>
+              </div>
             </div>
             <div className="py-8">
               <img

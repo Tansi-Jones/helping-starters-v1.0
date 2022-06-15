@@ -28,7 +28,7 @@ export default function Explore() {
       const response = createProject({ ...data, image: image });
       setIsLoading(false);
       toast(response.message);
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       setIsLoading(false);
       console.log(error);
