@@ -4,7 +4,7 @@ import { PrimaryCard } from "../components/Cards/PrimaryCard";
 import { useGetProjectsQuery } from "../services/projectApi";
 
 export default function Explore() {
-  const { data, error, isLoading } = useGetProjectsQuery();
+  const { data, isLoading } = useGetProjectsQuery();
 
   return (
     <div className="bg-secondaryAlt">

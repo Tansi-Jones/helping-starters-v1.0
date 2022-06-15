@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Skeleton from "../assets/skeleton.svg";
-import FileBase from "react-file-base64";
 import ReactFileReader from "react-file-reader";
 import { ImSpinner2 } from "react-icons/im";
 import { useCreateProjectMutation } from "../services/projectApi";
@@ -21,7 +20,6 @@ export default function Explore() {
     setImage(files.base64);
   };
 
-  // console.log(image);
   const [createProject] = useCreateProjectMutation();
 
   const onSubmit = async (data) => {
