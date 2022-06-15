@@ -46,7 +46,7 @@ export const Navigation = () => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      toast(error.data.message);
+      // toast(error.data.message);
     }
   };
 
