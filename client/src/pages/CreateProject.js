@@ -28,7 +28,7 @@ export default function Explore() {
       const response = createProject({ ...data, image: image });
       setIsLoading(false);
       toast(response.message);
-      setTimeout(()=>window.location.reload(),1000)
+//       setTimeout(()=>window.location.reload(),1000)
     } catch (error) {
       setIsLoading(false);
       console.log(error);
