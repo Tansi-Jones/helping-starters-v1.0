@@ -75,7 +75,7 @@ export default function Explore() {
                   Url/Website
                 </p>
                 <input
-                  {...register("url", { required: true })}
+                  {...register("url")}
                   className="outline-none bg-slate-200 rounded-lg text-base py-2 px-4 w-full text-slate-600 "
                 />
                 {errors.url && (
@@ -87,7 +87,7 @@ export default function Explore() {
                   Somthing else
                 </p>
                 <input
-                  {...register("moreDetails", { required: true })}
+                  {...register("moreDetails")}
                   className="outline-none bg-slate-200 rounded-lg text-base py-2 px-4 w-full text-slate-600 "
                 />
                 {errors.moreDetails && (
@@ -132,13 +132,13 @@ export default function Explore() {
                 base64={true}
                 handleFiles={handleFiles}
               >
-                <button className="mt-4 border border-secondary hover:bg-secondary hover:bg-opacity-10 rounded text-base py-2 px-2 w-full text-secondary block text-center cursor-pointer">
+                <button type="button" className="mt-4 border border-secondary hover:bg-secondary hover:bg-opacity-10 rounded text-base py-2 px-2 w-full text-secondary block text-center cursor-pointer">
                   Upload Image
                 </button>
               </ReactFileReader>
             </div>
           </section>
-          <button className="flex items-center justify-center space-x-3  md:hidden cursor-pointer bg-secondary text-white py-3 px-14 rounded text-base mx-auto capitalize my-14">
+          <button type="submit" className="flex items-center justify-center space-x-3  md:hidden cursor-pointer bg-secondary text-white py-3 px-14 rounded text-base mx-auto capitalize my-14">
             <span>Create Project</span>
             {isLoading && <ImSpinner2 className="text-white animate-spin" />}
           </button>
